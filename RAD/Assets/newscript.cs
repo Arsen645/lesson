@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class newscript : MonoBehaviour
 {
+    float runningSpeed = 3f;
+    float turningSpeed = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,29 @@ public class newscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0, 1, 0)*Time.deltaTime;
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += runningSpeed * transform.forward * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position -= runningSpeed * transform.forward * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(transform.up, turningSpeed * 45 * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(transform.up, turningSpeed * -45 * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            transform.position += runningSpeed * transform.up * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position -= runningSpeed * transform.up * Time.deltaTime;
+        }
     }
 }
