@@ -5,6 +5,8 @@ using UnityEngine;
 public class explodeScript : MonoBehaviour
 {
     Rigidbody rb;
+    float explosionRadius = 10;
+    float explosionStrength = 1000;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,19 @@ public class explodeScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Collider[] allVictimColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+            foreach (Collider col in allVictimColliders)
+        {
+            Rigidbody rigidbody = col.GetComponent<Rigidbody>();
+            if (rigidbody != null)
+            {
+                rigidbody.AddExplosionForce(explosionStrength, transform.position, explosionRadius);
+            }
+        }
+            Destroy(gameObject);
     }
 }
