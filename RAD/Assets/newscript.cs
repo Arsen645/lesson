@@ -27,6 +27,7 @@ public class newscript : MonoBehaviour
         {
             transform.Rotate(transform.up, turningSpeed * 45 * Time.deltaTime);
         }
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(transform.up, turningSpeed * -45 * Time.deltaTime);
