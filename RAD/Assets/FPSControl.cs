@@ -18,7 +18,7 @@ public class FPSControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            Vector3 fpsMovementDir = new Vector3(transform.forward.x, 0, transform.forward.z);
+            Vector3 fpsMovementDir = new Vector3(transform.forward.x, transform.forward.y, transform.forward.z);
             fpsMovementDir.Normalize();
             transform.position += speed * fpsMovementDir * Time.deltaTime;
         }
@@ -30,7 +30,7 @@ public class FPSControl : MonoBehaviour
         }
         transform.Rotate(Vector3.up, Input.GetAxis("Horizontal"), Space.World);
 
-        //transform.Rotate(transform.right, Input.GetAxis("Vertical"), Space.World);
+        transform.Rotate(transform.right, Input.GetAxis("Vertical"), Space.World);
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(knifeCloneTemplate, transform.position, transform.rotation);
