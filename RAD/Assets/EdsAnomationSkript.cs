@@ -20,11 +20,18 @@ public class EdsAnomationSkript : MonoBehaviour
     {
         EDSanimator.SetBool("backwardsRunning", false);
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.Q))
         {
             // make Ed walk backwards with animation
             EDSanimator.SetBool("backwardsRunning", true);
             transform.position += speed * transform.forward * Time.deltaTime*(-1);
+            
+        }
+        if (Input.GetKey(KeyCode.N))
+        {
+            Vector3 fpsMovementDir = new Vector3(transform.forward.x, 0, transform.forward.z);
+            fpsMovementDir.Normalize();
+            transform.position -= speed * fpsMovementDir * Time.deltaTime;
         }
     }
 }
