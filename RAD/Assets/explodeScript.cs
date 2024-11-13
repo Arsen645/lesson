@@ -5,7 +5,7 @@ using UnityEngine;
 public class explodeScript : MonoBehaviour
 {
     Rigidbody rb;
-    float explosionRadius = 10;
+    float explosionRadius = 50;
     float explosionStrength = 1000;
     // Start is called before the first frame update
     void Start()

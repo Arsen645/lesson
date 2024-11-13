@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class personScr : MonoBehaviour
 {
-    int health = 100;
+    int health = 10;
     int damage = 15;
     Rigidbody rb;
     internal void ExplosionAt(Vector3 position, float explosionRadius, float explosionStrength)
     {
         health -= damage;
         print("hhhhhhhhh " + health.ToString());
-        rb.AddExplosionForce(explosionStrength/10, position, explosionRadius);
+        rb.AddExplosionForce(explosionStrength / 10, position, explosionRadius);
     }
 
     // Start is called before the first frame update
@@ -24,6 +24,9 @@ public class personScr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Destroy(rb);
+        }
     }
 }
